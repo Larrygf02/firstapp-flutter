@@ -1,11 +1,16 @@
-
-
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget{
+class ContadorPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _ContadorPageState();
+  }
+}
 
-  final estiloTexto = TextStyle(fontSize: 25);
-  final conteo = 10;
+// el guion _ hace que la clase sea privada
+class _ContadorPageState extends State<ContadorPage> {
+  final _estiloTexto = TextStyle(fontSize: 25);
+  int _conteo = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,8 +22,8 @@ class HomePage extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Numero de clicks:', style: estiloTexto),
-            Text('$conteo', style: estiloTexto)
+            Text('Numero de clicks:', style: _estiloTexto),
+            Text('$_conteo', style: _estiloTexto)
           ],
           
         )
@@ -27,12 +32,15 @@ class HomePage extends StatelessWidget{
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          print('Hola Mundo');
+          _conteo++;
+          //el setState regenera el widget
+          setState(() {
+            
+          });
         },  
       ),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
-
 
 }
